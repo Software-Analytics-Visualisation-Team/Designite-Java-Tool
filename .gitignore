@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# Planemo / Galaxy ephemeral outputs
+tool_test_output.html
+tool_test_output.json
+.cache/
+.eggs/
+
+# Java/Maven
+target/
+*.log
+
+# Local jars / clones (not the tool)
+DesigniteJava.jar
+DesigniteJava/
+
+# OS/editor
+.DS_Store
+*.swp

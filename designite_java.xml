@@ -1,0 +1,53 @@
+<tool id="designite_java" name="Designite Java" version="0.3.0+galaxy0" profile="21.05">
+  <description>Detects code smells and computes metrics (CSV) for Java projects</description>
+
+  <requirements>
+    <requirement type="package" version="17">openjdk</requirement>
+    <requirement type="package" version="3.10">python</requirement>
+  </requirements>
+
+<command detect_errors="exit_code"><![CDATA[
+python '${__tool_directory__}/run_designite.py' '$src_zip' '$report_zip' '${__tool_directory__}/DesigniteJava.jar'
+]]></command>
+  <inputs>
+    <param name="src_zip" type="data" format="zip" label="ZIP archive of Java source code"/>
+  </inputs>
+
+  <outputs>
+    <data name="report_zip" format="zip" label="Designite metrics (ZIP)"/>
+  </outputs>
+
+<tests>
+  <test>
+    <param name="src_zip" value="tiny_project.zip"/>
+    <output name="report_zip">
+      <assert_contents>
+        <has_archive_member path=".*" n="4"/>
+        <has_archive_member path="typeMetrics\.csv"/>
+        <has_archive_member path="methodMetrics\.csv"/>
+        <has_archive_member path="designCodeSmells\.csv"/>
+        <has_archive_member path="implementationCodeSmells\.csv"/>
+      </assert_contents>
+    </output>
+  </test>
+</tests>
+    <help><![CDATA[
+**Usage**
+What does the tool : 
+It launches the equivalent of `java -jar DesigniteJava.jar -i <input> -o <out>` after the unzip
+
+**Notes**
+- You need a java Github repo as input
+    ]]></help>
+
+    <citations>
+        <citation type="bibtex">
+            @misc{DesigniteJava,
+              title = {DesigniteJava},
+              howpublished = {\\url{https://github.com/tushartushar/DesigniteJava\#readme}},
+              note = {Accessed: 2025-07-29}
+            }
+        </citation>
+    </citations>
+</tool>
+
