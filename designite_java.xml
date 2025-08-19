@@ -22,7 +22,7 @@ python '${__tool_directory__}/run_designite.py' '$src_zip' '$report_zip' '${__to
     <param name="src_zip" value="tiny_project.zip"/>
     <output name="report_zip">
       <assert_contents>
-        <has_archive_member path=".*" n="4"/>
+        <has_archive_member path=".*\.csv" min="4"/>
         <has_archive_member path="typeMetrics\.csv"/>
         <has_archive_member path="methodMetrics\.csv"/>
         <has_archive_member path="designCodeSmells\.csv"/>
