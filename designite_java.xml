@@ -2,7 +2,7 @@
   <description>Detects code smells and computes metrics (CSV) for Java projects</description>
 
   <requirements>
-    <requirement type="package" version="17">openjdk</requirement>
+    <requirement type="package" version="22">openjdk</requirement>
     <requirement type="package" version="3.10">python</requirement>
   </requirements>
 
